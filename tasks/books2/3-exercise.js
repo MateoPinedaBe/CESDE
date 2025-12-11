@@ -15,9 +15,20 @@ function getBooksByAmazonRating(rating) {
 
     let bks = []
 
-    for (let i = 0; i < books.length; i++){
-        if (ratings <= books[i].ratings[1].score){
-            bks.push(books[i]);
+    let score = null;
+
+    let amazonScore = null;
+
+    for (let i = 0; i < books.length; i++) {
+
+        amazonScore = books[i].ratings.find(ratings => ratings.source === "Amazon");
+
+        if (amazonScore) {
+            score = amazonScore.score;
+        }
+
+        if (score !== null && score >= ratings) {
+            bks.push(books[i])
         }
     }
 
