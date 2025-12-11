@@ -13,15 +13,15 @@ function getBooksByAmazonRating(rating) {
 
     if (isNaN(ratings)) return "Please, give a valid Rating."
 
-    let bks = []
+    let bks = [];
+
+    let count = 0;
 
     for (let i = 0; i < books.length; i++){
-        if (ratings <= books[i].ratings[1].score){
-            bks.push(books[i]);
-        }
+        if (books[i].ratings[i].source === "Amazon")
+            count++
     }
-
-    return bks;
+    return count;
 }
 
-console.log(getBooksByAmazonRating(4.9))
+console.log(getBooksByAmazonRating(4.7))

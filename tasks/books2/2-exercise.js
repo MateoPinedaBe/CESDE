@@ -16,7 +16,7 @@ function getBooksByGenre(genre) {
 
     for (let i = 0; i < books.length; i++) {
         if (books[i].genre.includes(genres)) {
-            bks += books[i];
+            bks.push(books[i]);
         }
     }
     return bks;
